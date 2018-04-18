@@ -17,7 +17,7 @@ class MyHandlerForHTTP(BaseHTTPRequestHandler):
             self.wfile.write(bytes('<p style="text-align:center">'+code+"</p>", 'UTF-8'))
 
 def run(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):
-    server_address = ('', os.environ['PORT'])
+    server_address = ('', int(os.environ['PORT']))
     httpd = server_class(server_address, handler_class)
     httpd.serve_forever()
     
