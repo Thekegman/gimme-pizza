@@ -2,7 +2,7 @@ from http.server import HTTPServer
 from http.server import BaseHTTPRequestHandler
 from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup
-import string
+import string, os
 
 URL = "https://www.boards.ie/vbulletin/showthread.php?t=2056744169&page="
 punctuation_strip = "".maketrans('','',string.punctuation)
@@ -17,7 +17,7 @@ class MyHandlerForHTTP(BaseHTTPRequestHandler):
             self.wfile.write(bytes('<p style="text-align:center">'+code+"</p>", 'UTF-8'))
 
 def run(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):
-    server_address = ('', 80)
+    server_address = ('', os.environ['PORT'])
     httpd = server_class(server_address, handler_class)
     httpd.serve_forever()
     
