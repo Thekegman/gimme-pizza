@@ -40,8 +40,8 @@ class MyHandlerForHTTP(BaseHTTPRequestHandler):
 
 
 def run(server_class=HTTPServer, handler_class=BaseHTTPRequestHandler):
-    #server_address = ('', int(os.environ['PORT']))
-    server_address = ('', int(80))
+    server_address = ('', int(os.environ['PORT']))
+    #server_address = ('', int(80))
     httpd = server_class(server_address, handler_class)
     httpd.serve_forever()
 
